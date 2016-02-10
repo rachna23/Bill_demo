@@ -1,4 +1,5 @@
-<%= form_for(@bill_detail) do |f| %>
+<%#= form_for(@bill_detail) do |f| %>
+<%= nested_form_for @bill_detail do |f| %>
   <% if @bill_detail.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@bill_detail.errors.count, "error") %> prohibited this bill_detail from being saved:</h2>
@@ -25,18 +26,20 @@
   </div> 
 
   <div class="field">
-   <ul>
-    <% User.all.each do |user| %>
-      <li>
-        <%= check_box_tag 'user_ids[]', user.id -%>
-        <%= h user.first_name -%>
-          <%= text_field_tag "user_amount[]",user.amount %>
-      </li>
+    <%= f.fields_for :amounts do |amount_form| %>
+      <%= amount_form.text_field :amount %>
+      <%= amount_form.link_to_remove "Remove this amount" %>
+      Payed by 
+      <% User.all.each do |user| %>
+        <li>
+          <%= check_box_tag 'user_ids[]', user.id -%>
+          <%= h user.first_name -%>
+          <%= amount_form.hidden_field :user_id, :value => user.id %>
+          <%#= text_field_tag "user_amount[]",amount %>
+        </li>
+      <% end %>
     <% end %>
-  </ul>
-
-
-
+    <p><%= f.link_to_add "Add more amount", :amounts %></p>
   </div> 
 
 

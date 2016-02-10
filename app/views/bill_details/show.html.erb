@@ -14,7 +14,9 @@
   <b>Date:</b>
   <%= @bill_detail.date %>
 </p>
+<p>
+  <b>Total Amount :</b>
+  <%= get_total_amount(@bill_detail) %>
+</p>
 
-
-<%= link_to 'Edit', edit_bill_detail_path(@bill_detail) %> |
 <%= link_to 'Back', bill_details_path %>

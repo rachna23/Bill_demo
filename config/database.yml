@@ -31,12 +31,3 @@ test:
   password: root
   socket: /var/run/mysqld/mysqld.sock
 
-production:
-  adapter: postgresql
-  encoding: utf8
-  reconnect: false
-  database: rails3_production
-  pool: 5
-  username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
