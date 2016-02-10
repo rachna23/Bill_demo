@@ -1,0 +1,27 @@
+<h1>Listing bill_details</h1>
+
+<table>
+  <tr>
+    <th>Event</th>
+    <th>Location</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bill_details.each do |bill_detail| %>
+  <tr>
+    <td><%= bill_detail.event %></td>
+    <td><%= bill_detail.location %></td>
+    <td><%= bill_detail.date %></td>
+    <td><%= link_to 'Show', bill_detail %></td>
+    <td><%= link_to 'Edit', edit_bill_detail_path(bill_detail) %></td>
+    <td><%= link_to 'Destroy', bill_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bill detail', new_bill_detail_path %>

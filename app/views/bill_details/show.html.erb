@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event:</b>
+  <%= @bill_detail.event %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @bill_detail.location %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @bill_detail.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_bill_detail_path(@bill_detail) %> |
+<%= link_to 'Back', bill_details_path %>

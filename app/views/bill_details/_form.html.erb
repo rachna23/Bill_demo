@@ -1,0 +1,48 @@
+<%= form_for(@bill_detail) do |f| %>
+  <% if @bill_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill_detail.errors.count, "error") %> prohibited this bill_detail from being saved:</h2>
+
+      <ul>
+      <% @bill_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :event %><br />
+    <%= f.select :event, [ 'lunch', 'dinner', 'snacks', 'breakfast'], :prompt => 'Select One' %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div> 
+
+  <div class="field">
+   <ul>
+    <% User.all.each do |user| %>
+      <li>
+        <%= check_box_tag 'user_ids[]', user.id -%>
+        <%= h user.first_name -%>
+          <%= text_field_tag "user_amount[]",user.amount %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+  </div> 
+
+
+
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
